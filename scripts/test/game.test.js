@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore, addTurn, lightsOn } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn, showTurns } = require("../game");
  beforeAll(() => {
     let fs = require("fs");
     let fileContents = fs.readFileSync("index.html", "utf-8");
@@ -14,7 +14,7 @@ const { game, newGame, showScore, addTurn, lightsOn } = require("../game");
  describe("game object contains correct keys", () => {
     test("score key exists", () => {
         expect("score" in game).toBe(true); 
-     });
+    });
     test("currentGame key exists", () => {
         expect("currentGame" in game).toBe(true); 
     });
@@ -27,6 +27,9 @@ const { game, newGame, showScore, addTurn, lightsOn } = require("../game");
     test("choices contains the correct ids", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]); 
     });
+    test("turnNumber key exists", () => {
+        expect("turnNumber" in game).toBe(true);
+    })
  });
 
 describe("newGame works correctly", () => {
@@ -48,6 +51,12 @@ describe("newGame works correctly", () => {
     });
     test("should display 0 for the element with the id of score", () => {
         expect(document.getElementById("score").innerText).toEqual(0);
+    });
+    test("expect data-listener to be true", () => {
+        const elements = document.getElementsByClassName("circle");
+        for (let element of elements) {
+            expect(element.getAttribute("data-listener")).toEqual("true");
+        }
     });
 });
 
@@ -72,4 +81,9 @@ describe("gameplay works correctly", () => {
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain("light");
     });
+    test("showTurns should update game.turnNumber", () => {
+        game.turnNumber = 42;
+        showTurns();
+        expect(game.turnNumber).toBe(0);
+    }) 
 })
