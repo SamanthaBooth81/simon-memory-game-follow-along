@@ -1,0 +1,22 @@
+{
+  "name": "simon-memory-game-follow-along",
+  "version": "1.0.0",
+  "description": "![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamanthaBooth81/simon-memory-game-follow-along.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamanthaBooth81/simon-memory-game-follow-along/issues"
+  },
+  "homepage": "https://github.com/SamanthaBooth81/simon-memory-game-follow-along#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
